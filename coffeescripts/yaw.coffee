@@ -16,7 +16,6 @@
         index = $li.index()
         $li.addClass('active')
           .siblings('li').removeClass('active')
-        e.preventDefault()
         return index
       tabsNavOnClick: (e)->
         index = e.data.plugin.eventHandlers.menuItemOnClick($(@))
@@ -36,7 +35,7 @@
 
 
     # Define the plugin
-    $.fn.extend myPlugin: (option, args...) ->
+    $.fn.extend yaw: (option, args...) ->
       @each ->
         $this = $(this)
         data = $this.data('yaw')
