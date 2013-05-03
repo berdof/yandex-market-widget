@@ -1,0 +1,38 @@
+* {
+  outline: none;
+}
+
+$images-layout: vertical;
+$images-spacing: 10px;
+@import "images/*.png";
+
+$stars-layout: vertical;
+$stars-spacing: 10px;
+@import "stars/*.png";
+
+@import "partials/settings";
+@import "partials/mixins";
+
+#yaw {
+  @import "compass/reset";
+  font-family: 'Arial' !important;
+  font-size: 13px;
+  margin: 0 auto;
+  width: 605px;
+  * {
+    font-family: 'Arial' !important;
+  }
+  a {
+    color: #002459;
+    font-size: 13px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .clearfix {
+    @include clearfix;
+  }
+  @import "partials/content";
+  @import "partials/footer";
+}
