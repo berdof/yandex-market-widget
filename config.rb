@@ -13,7 +13,7 @@ build_path="build"
 # output_style = :expanded or :nested or :compact or :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false
@@ -25,4 +25,4 @@ build_path="build"
 # sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
 
 sass_options = {:debug_info=>true} # by Fire.app 
-output_style = :nested # by Fire.app 
+output_style = :nested # by Fire.app p 

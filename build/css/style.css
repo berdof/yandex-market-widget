@@ -4,11 +4,11 @@
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yamarketWidgetApp\/images\/\*\.png}line{font-family:\0000342}}
 .images-sprite, #yaw .sm-logo {
-  background: url('/images/images-s04a2e6f0e2.png') no-repeat; }
+  background: url('../images/images-s04a2e6f0e2.png') no-repeat; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yamarketWidgetApp\/stars\/\*\.png}line{font-family:\0000350}}
 .stars-sprite, #yaw .yaw__product-rate, #yaw .yaw__product-rate span {
-  background: url('/images/stars-scc1ac2163b.png') no-repeat; }
+  background: url('../images/stars-scc1ac2163b.png') no-repeat; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yamarketWidgetApp\/sass\/partials\/_settings\.scss}line{font-family:\0000315}}
 .db {
@@ -249,7 +249,7 @@
     background-image: linear-gradient(bottom, #fce9c6 -16.67%, #ffffff 133.33%);
     -pie-background: linear-gradient(bottom, #fce9c6 -16.67%, #ffffff 133.33%);
     background: -ms-linear-gradient(bottom, #fce9c6 -16.67%, #ffffff 133.33%);
-    behavior: url('/css/PIE.htc');
+    behavior: url('PIE.htc');
     position: relative; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yamarketWidgetApp\/sass\/partials\/_content\.scss}line{font-family:\00003124}}
     #yaw .yaw__btn_yellow:hover, #yaw .yaw__btn_yellow:active {
