@@ -31,7 +31,14 @@ $stars-spacing: 10px;
     }
   }
   .clearfix {
-    @include clearfix;
+    &:before ,
+    &:after {
+      content: "";
+      display: table;
+    }
+    &:after {
+     clear: both;
+    }
   }
   @import "partials/content";
   @import "partials/footer";

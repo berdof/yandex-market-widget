@@ -231,8 +231,23 @@ $red: #ba2025;
   @extend .clearfix;
   color: #1e1e1e;
   font-size: 13px;
+  position: relative;
+  padding-left: 47px;
 }
-
+.yaw__feedback__ava{
+  @include spr(images, yaw__feedback__ava);
+  display: inline-block;
+  position: absolute;
+  border: 1px solid #d3d3d3;
+  @include border-radius(3px);
+  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  img{
+    width: 26px;
+    height: 26px;
+  }
+}
 .yaw__feedback__item__time {
   color: $gray;
 }
