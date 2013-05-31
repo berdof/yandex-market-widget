@@ -1,7 +1,7 @@
 
 /*
  **
-* jQuery Plugin SocialMart
+* jQuery Yandex fedbacks Plugin for socialmart.ru
 *
 * Author: Alexander Berdyshev
 *
@@ -18,11 +18,17 @@
     var Yaw;
     return Yaw = (function() {
 
+      Yaw.prototype.paginatorCreated = false;
+
+      Yaw.prototype.pagesCount = 1;
+
+      Yaw.prototype.activePage = 1;
+
       Yaw.prototype.$el = null;
 
       Yaw.prototype.defaults = {
         title: '',
-        serverUrl: 'http://dev2.socialmart.ru',
+        serverUrl: 'http://socialmart.ru',
         searchMode: 'splitbylat',
         region: 213,
         page: 1
@@ -36,19 +42,37 @@
         this.options = $.extend({}, this.defaults, options);
         this.$el = $(el);
         this.init();
+        return;
       }
 
       Yaw.prototype.eventHandlers = {
-        menuItemOnClick: function(e) {
-          var $li, index;
-          $li = e.parent();
-          index = $li.index();
-          $li.addClass('active').siblings('li').removeClass('active');
-          return index;
-        },
         sorterOnClick: function(e) {
-          var index;
-          index = e.data.plugin.eventHandlers.menuItemOnClick($(this));
+          return false;
+        },
+        changePageOnClick: function(e) {
+          var activePage, pageIncrement, pageNum, plugin, self, selfId;
+          plugin = e.data.plugin;
+          self = $(this);
+          selfId = self.attr('id');
+          activePage = plugin.activePage;
+          pageNum = self.html();
+          pageIncrement = ~~self.data('increment');
+          if (selfId !== 'yawNextPages') {
+            if ((pageIncrement !== 0) && activePage >= 0 && activePage <= plugin.pagesCount) {
+              activePage = activePage + pageIncrement;
+            } else {
+              activePage = pageNum;
+              self.addClass('active').closest('li').siblings().find('a').removeClass('active');
+            }
+            plugin.clearOpinions();
+            plugin.createPage(activePage);
+            plugin.activePage = activePage;
+            console.log(pageIncrement);
+          } else {
+            console.log("next pages portion");
+          }
+          $('#pageIndex').html(plugin.activePage + ' of ' + plugin.pagesCount);
+          e.preventDefault();
           return false;
         }
       };
@@ -57,23 +81,32 @@
         this.$el.find('.yaw__feedback__sort a').on('click', {
           plugin: this
         }, this.eventHandlers.sorterOnClick);
+        this.$el.find('.yaw__feedback__pager').on('click', 'a', {
+          plugin: this
+        }, this.eventHandlers.changePageOnClick);
+        this.$el.find('.yaw__feedback__pager_simple').on('click', 'a', {
+          plugin: this
+        }, this.eventHandlers.changePageOnClick);
       };
 
       Yaw.prototype.fetchId = function() {
         var selfOpts;
         selfOpts = this.options;
+        console.log("" + selfOpts.serverUrl + "/widget/get/model/?name=" + selfOpts.title + "&jsonp=?");
         return $.ajax({
           'url': "" + selfOpts.serverUrl + "/widget/get/model/?name=" + selfOpts.title + "&jsonp=?",
           'dataType': 'jsonp'
         });
       };
 
-      Yaw.prototype.fetchOpinions = function(page) {
-        var selfOpts;
+      Yaw.prototype.fetchMainDescr = function() {};
+
+      Yaw.prototype.fetchPage = function(page) {
+        var selfOpts, url;
         selfOpts = this.options;
-        this.log("" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?");
+        url = "" + selfOpts.serverUrl + "/widget/get/model/opinions?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?";
         return $.ajax({
-          'url': "" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?",
+          'url': url,
           'dataType': 'jsonp'
         });
       };
@@ -93,12 +126,48 @@
         });
       };
 
+      Yaw.prototype.clearOpinions = function() {
+        $('#yawFeedbackFrag').html('');
+      };
+
       Yaw.prototype.fillOpinion = function(data, id) {
         var frag;
         frag = this.createFeedbackFrag(id);
-        this.log(frag);
-        $('.yawFeedbackFrag:last').after(frag);
+        $('.yawFeedbackFrag').append(frag);
         this.fillFrag('#yawFeedback', frag, data);
+      };
+
+      Yaw.prototype.createPage = function(index) {
+        var self;
+        self = this;
+        self.fetchPage(index).done(function(d) {
+          if (!self.paginatorCreated) {
+            self.pagesCount = d.pages;
+          }
+          return d.opinions.forEach(function(opinion, i) {
+            opinion.gradeStyled = "width:" + opinion.grade * 20 + "%";
+            self.fillOpinion(opinion, index + i);
+            self.createPaginator();
+          });
+        });
+      };
+
+      Yaw.prototype.createPaginator = function() {
+        var $pager, i, _i, _ref;
+        $pager = '';
+        if (!this.paginatorCreated) {
+          for (i = _i = 0, _ref = this.pagesCount; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+            $pager += "<li><a href=javascript:void(0);>" + (i + 1) + "</a></li>";
+          }
+          $pager += "<li ><a id='yawNextPages' href=javascript:void(0);>...</a></li>";
+          $('.yaw__feedback__pager').html($pager);
+          $('.yaw__feedback__pager').find('li:first a').addClass('active');
+        }
+        this.paginatorCreated = true;
+      };
+
+      Yaw.prototype.activatePage = function(index) {
+        $('.yaw__feedback__pager').find('a').eq(index).addClass('active').parent().find('a').removeClass('active');
       };
 
       Yaw.prototype.init = function() {
@@ -106,17 +175,12 @@
         self = this;
         self.attachEvents();
         self.fetchId().done(function(d) {
+          var opinionsIter;
+          opinionsIter = 0;
           self.options.modelId = d.model_id;
           self.options.modelId = 8454852;
-          self.fetchOpinions(self.options.page++).done(function(d) {
-            var iter, opinion, _i;
-            for (iter = _i = 0; _i < 14; iter = ++_i) {
-              opinion = d.opinions[iter];
-              opinion.gradeStyled = "width:" + opinion.grade * 20 + "%";
-              console.log(opinion);
-              self.fillOpinion(opinion, self.options.page + iter);
-            }
-          });
+          self.createPage(1);
+          self.fetchMainDescr();
         });
       };
 

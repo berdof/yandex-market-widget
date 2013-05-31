@@ -1,3 +1,16 @@
+
+/*
+ **
+* jQuery Plugin SocialMart
+*
+* Author: Alexander Berdyshev
+*
+* Version: 1.0
+*
+ **
+*/
+
+
 (function() {
   var __slice = [].slice;
 
@@ -8,8 +21,15 @@
       Yaw.prototype.$el = null;
 
       Yaw.prototype.defaults = {
-        paramA: 'foo',
-        paramB: 'bar'
+        title: '',
+        serverUrl: 'http://dev2.socialmart.ru',
+        searchMode: 'splitbylat',
+        region: 213,
+        page: 1
+      };
+
+      Yaw.prototype.log = function(str) {
+        console.log(str);
       };
 
       function Yaw(el, options) {
@@ -26,11 +46,6 @@
           $li.addClass('active').siblings('li').removeClass('active');
           return index;
         },
-        tabsNavOnClick: function(e) {
-          var index;
-          index = e.data.plugin.eventHandlers.menuItemOnClick($(this));
-          e.data.plugin.$el.find('.yaw__tabs__contents__item').eq(index).fadeIn().siblings().hide();
-        },
         sorterOnClick: function(e) {
           var index;
           index = e.data.plugin.eventHandlers.menuItemOnClick($(this));
@@ -39,16 +54,70 @@
       };
 
       Yaw.prototype.attachEvents = function() {
-        this.$el.find('.yaw__tabs__nav a').on('click', {
-          plugin: this
-        }, this.eventHandlers.tabsNavOnClick);
         this.$el.find('.yaw__feedback__sort a').on('click', {
           plugin: this
         }, this.eventHandlers.sorterOnClick);
       };
 
+      Yaw.prototype.fetchId = function() {
+        var selfOpts;
+        selfOpts = this.options;
+        return $.ajax({
+          'url': "" + selfOpts.serverUrl + "/widget/get/model/?name=" + selfOpts.title + "&jsonp=?",
+          'dataType': 'jsonp'
+        });
+      };
+
+      Yaw.prototype.fetchOpinions = function(page) {
+        var selfOpts;
+        selfOpts = this.options;
+        this.log("" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?");
+        return $.ajax({
+          'url': "" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?",
+          'dataType': 'jsonp'
+        });
+      };
+
+      Yaw.prototype.fillFrag = function(templateId, $frag, data) {
+        var html, source, template;
+        source = $(templateId).html();
+        template = Handlebars.compile(source);
+        html = template(data);
+        $frag.html(html);
+      };
+
+      Yaw.prototype.createFeedbackFrag = function(id) {
+        return $('<div></div>', {
+          'class': 'yawFeedbackFrag',
+          'id': "yawFeedbackFrag" + id
+        });
+      };
+
+      Yaw.prototype.fillOpinion = function(data, id) {
+        var frag;
+        frag = this.createFeedbackFrag(id);
+        this.log(frag);
+        $('.yawFeedbackFrag:last').after(frag);
+        this.fillFrag('#yawFeedback', frag, data);
+      };
+
       Yaw.prototype.init = function() {
-        this.attachEvents();
+        var self;
+        self = this;
+        self.attachEvents();
+        self.fetchId().done(function(d) {
+          self.options.modelId = d.model_id;
+          self.options.modelId = 8454852;
+          self.fetchOpinions(self.options.page++).done(function(d) {
+            var iter, opinion, _i;
+            for (iter = _i = 0; _i < 14; iter = ++_i) {
+              opinion = d.opinions[iter];
+              opinion.gradeStyled = "width:" + opinion.grade * 20 + "%";
+              console.log(opinion);
+              self.fillOpinion(opinion, self.options.page + iter);
+            }
+          });
+        });
       };
 
       $.fn.extend({
@@ -73,9 +142,5 @@
 
     })();
   })(window.jQuery, window);
-
-  $(window).load(function() {
-    return $('.yaw__tabs__nav li').eq(2).find('a').trigger('click');
-  });
 
 }).call(this);
