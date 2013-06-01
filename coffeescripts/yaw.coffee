@@ -20,7 +20,12 @@
       serverUrl: 'http://socialmart.ru'
       searchMode: 'splitbylat'
       region: 213
-      page: 1
+      page: 1  ,
+      #1- дата
+      #2- оценка
+      #3- полезность
+      sortOrder: 1
+
     log: (str)->
       console.log str
       return
@@ -32,7 +37,15 @@
   #981 658
     eventHandlers:
       sorterOnClick: (e)->
-        #index = e.data.plugin.eventHandlers.menuItemOnClick($(@))
+        plugin = e.data.plugin
+        self = $(this)
+        $li =self.parent()
+        $li.addClass('active')
+          .siblings().removeClass('active')
+
+        plugin.options.sortOrder = $li.index()
+        #$('.yaw__feedback__pager a').eq(0).trigger('click')
+        plugin.eventHandlers.changePageOnClick(e)
         return false
       changePageOnClick:(e)->
         plugin = e.data.plugin
@@ -41,18 +54,22 @@
         activePage = plugin.activePage
         pageNum = self.html()
         pageIncrement = ~~self.data('increment')
-
+        isLast = activePage is plugin.pagesCount
+        isFirst = activePage>1
+        if  self.hasClass('disabled') or self.hasClass('active')
+          return false
         if selfId isnt 'yawNextPages'
-          if (pageIncrement isnt 0) and activePage>=0 and activePage<=plugin.pagesCount
-            activePage = activePage + pageIncrement
-          else
-            activePage = pageNum
-            self.addClass('active')
-              .closest('li').siblings().find('a').removeClass('active')
-          plugin.clearOpinions()
-          plugin.createPage(activePage)
-          plugin.activePage = activePage
-          console.log pageIncrement
+            if pageIncrement > 0 and  !isLast #next
+              ++activePage
+            else if pageIncrement < 0 and isFirst #prev
+              --activePage
+            else if pageIncrement is 0 #right paginator
+              activePage = pageNum
+
+            plugin.clearOpinions()
+            plugin.createPage(activePage)
+            plugin.activePage = activePage
+
         else
           console.log "next pages portion"
           #todo: create pagination portions
@@ -67,7 +84,6 @@
       return
     fetchId: ()->
       selfOpts = @options
-      console.log "#{selfOpts.serverUrl}/widget/get/model/?name=#{selfOpts.title}&jsonp=?"
       $.ajax(
         'url': "#{selfOpts.serverUrl}/widget/get/model/?name=#{selfOpts.title}&jsonp=?"
         'dataType': 'jsonp'
@@ -75,9 +91,13 @@
     fetchMainDescr:()->
 
       return
-    fetchPage: (page)->
+    fetchPage: (page=1)->
       selfOpts = @options
-      url = "#{selfOpts.serverUrl}/widget/get/model/opinions?model=#{selfOpts.modelId}&region=#{selfOpts.region}&page=#{page}&jsonp=?"
+
+      url = "#{selfOpts.serverUrl}/widget/get/model/opinions?model=#{selfOpts.modelId}&region=#{selfOpts.region}&page=#{page}&sort=#{selfOpts.sortOrder}&jsonp=?"
+
+      console.log url
+
       $.ajax(
         'url': url
         'dataType': 'jsonp'
@@ -107,6 +127,11 @@
       self =@
       self.fetchPage(index).done(
         (d)->
+          if !self.paginatorCreated
+            data =
+              ratingCount: d.ratingCount
+              ratingValue: d.ratingValue*20
+            self.fillFrag('#yawHead',$('.yaw__feedback__head'),data)
           if not self.paginatorCreated
             self.pagesCount = d.pages
           d.opinions.forEach((opinion,i)->
@@ -116,6 +141,8 @@
             self.createPaginator()
             return
           )
+          self.activatePage(index)
+          return
         )
       return
     createPaginator:()->
@@ -123,14 +150,22 @@
       if not @.paginatorCreated
         for i in [0...@pagesCount]
           $pager+="<li><a href=javascript:void(0);>#{i+1}</a></li>"
-        $pager+="<li ><a id='yawNextPages' href=javascript:void(0);>...</a></li>"
+        #$pager+="<li ><a id='yawNextPages' href=javascript:void(0);>...</a></li>"
         $('.yaw__feedback__pager').html($pager)
         $('.yaw__feedback__pager').find('li:first a').addClass('active')
       @.paginatorCreated = yes
       return
-    activatePage:(index)->
-      $('.yaw__feedback__pager').find('a').eq(index)
-        .addClass('active').parent().find('a').removeClass('active')
+    activatePage:(index )->
+      self = @
+      isFirst = ~~self.activePage is 1
+      isLast = ~~self.activePage is self.pagesCount
+      $('.yaw__feedback__pager').find('li').eq(index-1).find('a').addClass('active')
+        .closest('li').siblings().find('a').removeClass('active')
+      $('.yaw__feedback__pager_simple a').removeClass('disabled')
+      if(isFirst)
+        $('.yaw__feedback__pager_simple li').eq(1).find('a').addClass('disabled')
+      if(isLast)
+        $('.yaw__feedback__pager_simple li').eq(2).find('a').addClass('disabled')
       return
     init: () ->
       self = this

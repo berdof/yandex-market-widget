@@ -1,7 +1,7 @@
 
 /*
  **
-* jQuery Plugin SocialMart
+* jQuery Yandex fedbacks Plugin for socialmart.ru
 *
 * Author: Alexander Berdyshev
 *
@@ -18,14 +18,21 @@
     var Yaw;
     return Yaw = (function() {
 
+      Yaw.prototype.paginatorCreated = false;
+
+      Yaw.prototype.pagesCount = 1;
+
+      Yaw.prototype.activePage = 1;
+
       Yaw.prototype.$el = null;
 
       Yaw.prototype.defaults = {
         title: '',
-        serverUrl: 'http://dev2.socialmart.ru',
+        serverUrl: 'http://socialmart.ru',
         searchMode: 'splitbylat',
         region: 213,
-        page: 1
+        page: 1,
+        sortOrder: 1
       };
 
       Yaw.prototype.log = function(str) {
@@ -36,19 +43,49 @@
         this.options = $.extend({}, this.defaults, options);
         this.$el = $(el);
         this.init();
+        return;
       }
 
       Yaw.prototype.eventHandlers = {
-        menuItemOnClick: function(e) {
-          var $li, index;
-          $li = e.parent();
-          index = $li.index();
-          $li.addClass('active').siblings('li').removeClass('active');
-          return index;
-        },
         sorterOnClick: function(e) {
-          var index;
-          index = e.data.plugin.eventHandlers.menuItemOnClick($(this));
+          var $li, plugin, self;
+          plugin = e.data.plugin;
+          self = $(this);
+          $li = self.parent();
+          $li.addClass('active').siblings().removeClass('active');
+          plugin.options.sortOrder = $li.index();
+          plugin.eventHandlers.changePageOnClick(e);
+          return false;
+        },
+        changePageOnClick: function(e) {
+          var activePage, isFirst, isLast, pageIncrement, pageNum, plugin, self, selfId;
+          plugin = e.data.plugin;
+          self = $(this);
+          selfId = self.attr('id');
+          activePage = plugin.activePage;
+          pageNum = self.html();
+          pageIncrement = ~~self.data('increment');
+          isLast = activePage === plugin.pagesCount;
+          isFirst = activePage > 1;
+          if (self.hasClass('disabled') || self.hasClass('active')) {
+            return false;
+          }
+          if (selfId !== 'yawNextPages') {
+            if (pageIncrement > 0 && !isLast) {
+              ++activePage;
+            } else if (pageIncrement < 0 && isFirst) {
+              --activePage;
+            } else if (pageIncrement === 0) {
+              activePage = pageNum;
+            }
+            plugin.clearOpinions();
+            plugin.createPage(activePage);
+            plugin.activePage = activePage;
+          } else {
+            console.log("next pages portion");
+          }
+          $('#pageIndex').html(plugin.activePage + ' of ' + plugin.pagesCount);
+          e.preventDefault();
           return false;
         }
       };
@@ -57,6 +94,12 @@
         this.$el.find('.yaw__feedback__sort a').on('click', {
           plugin: this
         }, this.eventHandlers.sorterOnClick);
+        this.$el.find('.yaw__feedback__pager').on('click', 'a', {
+          plugin: this
+        }, this.eventHandlers.changePageOnClick);
+        this.$el.find('.yaw__feedback__pager_simple').on('click', 'a', {
+          plugin: this
+        }, this.eventHandlers.changePageOnClick);
       };
 
       Yaw.prototype.fetchId = function() {
@@ -68,12 +111,18 @@
         });
       };
 
-      Yaw.prototype.fetchOpinions = function(page) {
-        var selfOpts;
+      Yaw.prototype.fetchMainDescr = function() {};
+
+      Yaw.prototype.fetchPage = function(page) {
+        var selfOpts, url;
+        if (page == null) {
+          page = 1;
+        }
         selfOpts = this.options;
-        this.log("" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?");
+        url = "" + selfOpts.serverUrl + "/widget/get/model/opinions?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&sort=" + selfOpts.sortOrder + "&jsonp=?";
+        console.log(url);
         return $.ajax({
-          'url': "" + selfOpts.serverUrl + "/widget/get/model/opinions/?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&jsonp=?",
+          'url': url,
           'dataType': 'jsonp'
         });
       };
@@ -93,12 +142,67 @@
         });
       };
 
+      Yaw.prototype.clearOpinions = function() {
+        $('#yawFeedbackFrag').html('');
+      };
+
       Yaw.prototype.fillOpinion = function(data, id) {
         var frag;
         frag = this.createFeedbackFrag(id);
-        this.log(frag);
-        $('.yawFeedbackFrag:last').after(frag);
+        $('.yawFeedbackFrag').append(frag);
         this.fillFrag('#yawFeedback', frag, data);
+      };
+
+      Yaw.prototype.createPage = function(index) {
+        var self;
+        self = this;
+        self.fetchPage(index).done(function(d) {
+          var data;
+          if (!self.paginatorCreated) {
+            data = {
+              ratingCount: d.ratingCount,
+              ratingValue: d.ratingValue * 20
+            };
+            self.fillFrag('#yawHead', $('.yaw__feedback__head'), data);
+          }
+          if (!self.paginatorCreated) {
+            self.pagesCount = d.pages;
+          }
+          d.opinions.forEach(function(opinion, i) {
+            opinion.gradeStyled = "width:" + opinion.grade * 20 + "%";
+            self.fillOpinion(opinion, index + i);
+            self.createPaginator();
+          });
+          self.activatePage(index);
+        });
+      };
+
+      Yaw.prototype.createPaginator = function() {
+        var $pager, i, _i, _ref;
+        $pager = '';
+        if (!this.paginatorCreated) {
+          for (i = _i = 0, _ref = this.pagesCount; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
+            $pager += "<li><a href=javascript:void(0);>" + (i + 1) + "</a></li>";
+          }
+          $('.yaw__feedback__pager').html($pager);
+          $('.yaw__feedback__pager').find('li:first a').addClass('active');
+        }
+        this.paginatorCreated = true;
+      };
+
+      Yaw.prototype.activatePage = function(index) {
+        var isFirst, isLast, self;
+        self = this;
+        isFirst = ~~self.activePage === 1;
+        isLast = ~~self.activePage === self.pagesCount;
+        $('.yaw__feedback__pager').find('li').eq(index - 1).find('a').addClass('active').closest('li').siblings().find('a').removeClass('active');
+        $('.yaw__feedback__pager_simple a').removeClass('disabled');
+        if (isFirst) {
+          $('.yaw__feedback__pager_simple li').eq(1).find('a').addClass('disabled');
+        }
+        if (isLast) {
+          $('.yaw__feedback__pager_simple li').eq(2).find('a').addClass('disabled');
+        }
       };
 
       Yaw.prototype.init = function() {
@@ -106,17 +210,12 @@
         self = this;
         self.attachEvents();
         self.fetchId().done(function(d) {
+          var opinionsIter;
+          opinionsIter = 0;
           self.options.modelId = d.model_id;
           self.options.modelId = 8454852;
-          self.fetchOpinions(self.options.page++).done(function(d) {
-            var iter, opinion, _i;
-            for (iter = _i = 0; _i < 14; iter = ++_i) {
-              opinion = d.opinions[iter];
-              opinion.gradeStyled = "width:" + opinion.grade * 20 + "%";
-              console.log(opinion);
-              self.fillOpinion(opinion, self.options.page + iter);
-            }
-          });
+          self.createPage(1);
+          self.fetchMainDescr();
         });
       };
 

@@ -3,7 +3,7 @@
   outline: none; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/images\/\*\.png}line{font-family:\0000350}}
-.images-sprite, #yaw .sm-logo, #yaw .yaw__feedback__ava {
+.images-sprite, #yaw .sm-logo {
   background: url('../images/images-sc74128a9e3.png') no-repeat; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/stars\/\*\.png}line{font-family:\0000350}}
@@ -202,7 +202,7 @@
     -o-border-radius: 50px;
     border-radius: 50px;
     text-decoration: none !important; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000381}}
   #yaw .yaw__btn_yellow {
     border: 1px solid #ecdcbf;
     -webkit-box-shadow: inset 0 1px 0 white;
@@ -217,10 +217,10 @@
     background: -ms-linear-gradient(bottom, #fce9c6 -16.67%, #ffffff 133.33%);
     behavior: url('PIE.htc');
     position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000388}}
     #yaw .yaw__btn_yellow:hover, #yaw .yaw__btn_yellow:active {
       background: #fce9c6; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000393}}
   #yaw .yaw__label, #yaw .yaw__label_grey, #yaw .yaw__vote-count {
     height: 23px;
     line-height: 23px;
@@ -229,41 +229,41 @@
     box-sizing: border-box;
     min-width: 157px;
     padding: 0 10px 0 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003100}}
   #yaw .yaw__label_grey, #yaw .yaw__vote-count {
     color: #898989;
     font-size: 14px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003106}}
   #yaw .yaw__feedback__head__bottom {
     background-color: #f9f9f9;
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003112}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003113}}
   #yaw .yaw__vote-count {
     padding-left: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003118}}
   #yaw .yaw__descr {
     padding: 16px 0 6px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003122}}
   #yaw .yaw__descr__item {
     color: #1c1c1c;
     margin: 0 !important;
     padding: 0 0 8px 0 !important; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003127}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003128}}
   #yaw .yaw__descr__name {
     font-weight: 700; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003140}}
   #yaw .yaw__feedback__sort {
     padding: 14px 0 !important; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003143}}
     #yaw .yaw__feedback__sort li {
       font-size: 14px;
       position: relative;
       padding: 0 5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003147}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003148}}
       #yaw .yaw__feedback__sort li.active a {
         font-weight: 700; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003151}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003152}}
       #yaw .yaw__feedback__sort li.active:after {
         content: '';
         left: 0;
@@ -275,21 +275,21 @@
         height: 0;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003165}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003166}}
       #yaw .yaw__feedback__sort li.asc:after {
         border-bottom: 5px solid #b8bcc7; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003170}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003171}}
       #yaw .yaw__feedback__sort li.desc:after {
         top: -1px;
         border-bottom: 0;
         border-top: 5px solid #b8bcc7; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003177}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003178}}
     #yaw .yaw__feedback__sort a {
       font-size: 14px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003182}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003183}}
   #yaw .yaw__feedback__item {
     padding: 0 0 20px 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003187}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003188}}
   #yaw .yaw__feedback__item__head {
     -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.09);
     -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.09);
@@ -309,11 +309,8 @@
     font-size: 13px;
     position: relative;
     padding-left: 47px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003200}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003201}}
   #yaw .yaw__feedback__ava {
-    background-position: 0 -24px;
-    height: 26px;
-    width: 26px;
     display: inline-block;
     position: absolute;
     border: 1px solid #d3d3d3;
@@ -325,55 +322,55 @@
     overflow: hidden;
     left: 0;
     bottom: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003209}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003210}}
     #yaw .yaw__feedback__ava img {
       width: 26px;
       height: 26px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003214}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003215}}
   #yaw .yaw__feedback__item__time {
     color: #868686; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003218}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003219}}
   #yaw .yaw__feedback__item__rate {
     color: #868686;
     padding-bottom: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003224}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003225}}
   #yaw .yaw__feedback__usefull {
     clear: both;
     float: right;
     color: #868686; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003230}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003231}}
   #yaw .yaw__feedback__usefull__yes {
     color: #006707; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003234}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003235}}
   #yaw .yaw__feedback__usefull__no {
     color: #ba2025; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003238}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003239}}
   #yaw .yaw__feedback__footer {
     border-top: 1px solid #e5e5e5;
     padding-top: 11px;
     background-color: #fdfdfd; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003247}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003248}}
   #yaw .yaw__feedback__pager_simple li {
     height: 22px;
     line-height: 22px;
     display: block;
     font-size: 14px;
     padding: 0 8px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003253}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003254}}
   #yaw .yaw__feedback__pager_simple a {
-    color: #a2a2a2;
+    color: #002459;
+    cursor: pointer;
     font-size: 14px;
-    text-decoration: none;
-    cursor: default; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003258}}
-    #yaw .yaw__feedback__pager_simple a.active {
-      color: #002459;
-      cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003267}}
+    text-decoration: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003255}}
+    #yaw .yaw__feedback__pager_simple a.disabled {
+      color: #a2a2a2;
+      cursor: default; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003268}}
   #yaw .yaw__feedback__pager li {
     margin: 0;
     padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003271}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003272}}
   #yaw .yaw__feedback__pager a {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -386,7 +383,7 @@
     text-align: center;
     height: 22px;
     line-height: 22px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003281}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/berdof\/\%D0\%9F\%D1\%80\%D0\%BE\%D0\%B5\%D0\%BA\%D1\%82\%D1\%8B\/SocialMart\/yamarktWidget\/yandex-market-widget\/sass\/partials\/_content\.scss}line{font-family:\00003282}}
     #yaw .yaw__feedback__pager a.active, #yaw .yaw__feedback__pager a:hover {
       font-weight: 700;
       color: black;

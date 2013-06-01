@@ -252,14 +252,14 @@ $red: #ba2025;
     padding: 0 8px;
   }
   a {
-    color: #a2a2a2;
+    &.disabled{
+      color: #a2a2a2;
+      cursor: default;
+    }
+    color: #002459;
+    cursor: pointer;
     font-size: 14px;
     text-decoration: none;
-    cursor: default;
-    &.active {
-      color: #002459;
-      cursor: pointer;
-    }
   }
 }
 
