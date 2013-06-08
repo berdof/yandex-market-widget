@@ -10,7 +10,14 @@
 ###
 
 (($, window) ->
+  skeleton=
+    head: "
+       ФЫфы
+         Sas
+       "
+
   class Yaw
+    #skeleton: skeleton
     paginatorCreated:no
     pagesCount :1
     activePage:1
@@ -25,6 +32,7 @@
       #2- оценка
       #3- полезность
       sortOrder: 1
+      cssLinkPath: 'css/style.css?v='+Math.round(+new Date()/1000)
 
     log: (str)->
       console.log str
@@ -32,6 +40,7 @@
     constructor: (el, options) ->
       @options = $.extend({}, @defaults, options)
       @$el = $(el)
+      console.log  $(window).YawViews
       @init()
       return
   #981 658
@@ -94,7 +103,7 @@
     fetchPage: (page=1)->
       selfOpts = @options
 
-      url = "#{selfOpts.serverUrl}/widget/get/model/opinions?model=#{selfOpts.modelId}&region=#{selfOpts.region}&page=#{page}&sort=#{selfOpts.sortOrder}&jsonp=?"
+      url = "#{selfOpts.serverUrl}/widget/get/model/opinions?model=#{selfOpts.modelId}&region=#{selfOpts.region}&page=#{page}&order=#{selfOpts.sortOrder}&jsonp=?"
 
       console.log url
 

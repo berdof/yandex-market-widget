@@ -15,7 +15,10 @@
   var __slice = [].slice;
 
   (function($, window) {
-    var Yaw;
+    var Yaw, skeleton;
+    skeleton = {
+      head: "       Ф         Sas       "
+    };
     return Yaw = (function() {
 
       Yaw.prototype.paginatorCreated = false;
@@ -32,7 +35,8 @@
         searchMode: 'splitbylat',
         region: 213,
         page: 1,
-        sortOrder: 1
+        sortOrder: 1,
+        cssLinkPath: 'css/style.css?v=' + Math.round(+new Date() / 1000)
       };
 
       Yaw.prototype.log = function(str) {
@@ -42,6 +46,7 @@
       function Yaw(el, options) {
         this.options = $.extend({}, this.defaults, options);
         this.$el = $(el);
+        console.log($(window).YawViews);
         this.init();
         return;
       }
@@ -119,7 +124,7 @@
           page = 1;
         }
         selfOpts = this.options;
-        url = "" + selfOpts.serverUrl + "/widget/get/model/opinions?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&sort=" + selfOpts.sortOrder + "&jsonp=?";
+        url = "" + selfOpts.serverUrl + "/widget/get/model/opinions?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&order=" + selfOpts.sortOrder + "&jsonp=?";
         console.log(url);
         return $.ajax({
           'url': url,
