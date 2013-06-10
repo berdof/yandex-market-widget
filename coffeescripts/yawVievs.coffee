@@ -124,3 +124,4 @@ yawMain = """
 #{yawFooter}
           </div>
           """
+$.fn.yawSkeleton = yawMain
