@@ -31,7 +31,7 @@ var __slice = [].slice;
       region: 213,
       page: 1,
       sortOrder: 1,
-      cssLinkPath: 'css/style.css?v=' + Math.round(+new Date() / 1000),
+      cssLinkPath: 'http://socialmart.ru/css/style.css',
       widgetSelectorId: 'yaw'
     };
 
@@ -39,11 +39,22 @@ var __slice = [].slice;
       console.log(str);
     };
 
+    Yaw.prototype.appendLibraries = function() {
+      var self;
+
+      self = this;
+      $yawJq('head').prepend($yawJq('<link/>', {
+        'href': self.options.cssLinkPath,
+        'rel': 'stylesheet'
+      }));
+    };
+
     function Yaw(el, options) {
       this.options = $yawJq.extend({}, this.defaults, options);
       this.$el = $yawJq(el);
       $yawJq("#" + this.options.widgetSelectorId).html($yawJq.fn.yawSkeleton);
       this.init();
+      this.appendLibraries();
       return;
     }
 
@@ -106,11 +117,13 @@ var __slice = [].slice;
     };
 
     Yaw.prototype.fetchId = function() {
-      var selfOpts;
+      var selfOpts, url;
 
       selfOpts = this.options;
+      url = "" + selfOpts.serverUrl + "/widget/get/model/?name=" + selfOpts.title + "&jsonp=?";
+      console.log(url);
       return $yawJq.ajax({
-        'url': "" + selfOpts.serverUrl + "/widget/get/model/?name=" + selfOpts.title + "&jsonp=?",
+        'url': url,
         'dataType': 'jsonp'
       });
     };
@@ -125,7 +138,6 @@ var __slice = [].slice;
       }
       selfOpts = this.options;
       url = "" + selfOpts.serverUrl + "/widget/get/model/opinions?model=" + selfOpts.modelId + "&region=" + selfOpts.region + "&page=" + page + "&order=" + selfOpts.sortOrder + "&jsonp=?";
-      console.log(url);
       return $yawJq.ajax({
         'url': url,
         'dataType': 'jsonp'
@@ -226,7 +238,6 @@ var __slice = [].slice;
 
         opinionsIter = 0;
         self.options.modelId = d.model_id;
-        self.options.modelId = 8454852;
         self.createPage(1);
         self.fetchMainDescr();
       });

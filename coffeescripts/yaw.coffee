@@ -26,17 +26,26 @@
       #2- оценка
       #3- полезность
       sortOrder: 1
-      cssLinkPath: 'css/style.css?v='+Math.round(+new Date()/1000)
+      cssLinkPath: 'http://socialmart.ru/css/style.css'
       widgetSelectorId: 'yaw'
 
     log: (str)->
       console.log str
       return
+    appendLibraries:()->
+      self = @
+      $yawJq('head').prepend($yawJq('<link/>', {
+        'href': self.options.cssLinkPath,
+        'rel': 'stylesheet'
+      }));
+      return
     constructor: (el, options) ->
       @options = $yawJq.extend({}, @defaults, options)
       @$el = $yawJq(el)
       $yawJq("##{@options.widgetSelectorId}").html(  $yawJq.fn.yawSkeleton);
+
       @init()
+      @appendLibraries();
       return
   #981 658
     eventHandlers:
@@ -88,8 +97,10 @@
       return
     fetchId: ()->
       selfOpts = @options
+      url = "#{selfOpts.serverUrl}/widget/get/model/?name=#{selfOpts.title}&jsonp=?"
+      console.log url
       $yawJq.ajax(
-        'url': "#{selfOpts.serverUrl}/widget/get/model/?name=#{selfOpts.title}&jsonp=?"
+        'url': url
         'dataType': 'jsonp'
       )
     fetchMainDescr:()->
@@ -99,8 +110,6 @@
       selfOpts = @options
 
       url = "#{selfOpts.serverUrl}/widget/get/model/opinions?model=#{selfOpts.modelId}&region=#{selfOpts.region}&page=#{page}&order=#{selfOpts.sortOrder}&jsonp=?"
-
-      console.log url
 
       $yawJq.ajax(
         'url': url
@@ -180,7 +189,7 @@
           opinionsIter  = 0
           self.options.modelId = d.model_id
           #override id wth mine
-          self.options.modelId = 8454852
+          #self.options.modelId = 8454852
 
           self.createPage(1)
 
